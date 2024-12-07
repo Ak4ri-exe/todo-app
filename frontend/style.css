@@ -29,3 +29,8 @@ header p{
     padding: 40px;
 }
 
+.completed {
+    text-decoration: line-through;
+    color: #D4BEE4;
+    /* border: 1px solid gray; */
+}
