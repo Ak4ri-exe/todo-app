@@ -51,5 +51,5 @@ function addTask() {
     // Add event listener to the delete button
     deleteBtn.addEventListener("click", function(){
         listContainer.removeChild(li); // remove the list item from the container
-    });
+    }); // need to add a message -> are u sure u want to delete task ?
 }
