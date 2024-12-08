@@ -58,3 +58,10 @@ function addTask() {
             // listContainer.removeChild(li); // u can do it this way too
     });
 }
+
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://your-project.supabase.co';
+const supabaseKey = 'your-anon-key';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
