@@ -20,17 +20,19 @@ function addTask() {
         <input type="checkbox">
         <span> ${task} </span>
     </label>
-    <span class="edit-btn"> Edit </span>
-    <span class="delete-btn"> Delete </span>
+    <span class="icon-container">
+        <i class="fas fa-edit edit-icon"></i>
+        <i class="fas fa-trash delete-icon"></i>
+    </span>
     `;
     listContainer.appendChild(li); // add the newly created list item to the container specified by listContainer
     inputBox.value = "";
 
     // Select elements within the list item
     const checkbox = li.querySelector("input"); // select by the input HTML tag inside the li
-    const editBtn = li.querySelector(".edit-btn"); // select by class
+    const editBtn = li.querySelector(".edit-icon"); // select by class
     const taskSpan = li.querySelector("span"); // select by the span HTML tag inside the li
-    const deleteBtn = li.querySelector(".delete-btn"); // select by class
+    const deleteBtn = li.querySelector(".delete-icon"); // select by class
 
     // Add event listener to the checkbox
     checkbox.addEventListener("click", function (){
@@ -38,7 +40,7 @@ function addTask() {
         // the CSS style for the class .completed is executed too when it's checked
     });
 
-    // Add event listener to the edit button
+    // Add event listener to the edit icon
     editBtn.addEventListener("click", function(){
         const update = prompt("Edit task:", taskSpan.textContent); // prompt() -> display a dialog box asking the user to input a new task
         if (update != null) {
@@ -48,8 +50,11 @@ function addTask() {
         }
     });
 
-    // Add event listener to the delete button
+    // Add event listener to the delete icon
     deleteBtn.addEventListener("click", function(){
-        listContainer.removeChild(li); // remove the list item from the container
-    }); // need to add a message -> are u sure u want to delete task ?
+        var confirmDelete = confirm("Are u sure you want to delete this Task?"); // returns true if the user click on ok
+        if (confirmDelete)
+            li.remove();  // remove the list item from the container
+            // listContainer.removeChild(li); // u can do it this way too
+    });
 }
