@@ -24,7 +24,8 @@ checkConnection();
 // sign up a user
 async function registerUser(username, email, password){
     //add email and pw
-    const { data: authData, error: authError } = await supabase.auth.signUp({
+    const { data: authData, error: authError } = await supabase.signUp({
+        username: username,
         email: email,
         password: password,
     });

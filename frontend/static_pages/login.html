@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <p><a href="../index.html">To Do List</a></p>
+        <ul>
+            <li><a href="../static_pages/login.html">login</a></li>
+            <li><a href="../static_pages/register.html">sign up</a></li>
+        </ul>
+    </header>
+    </header>
+    <section class="sign-in-form">
+        <form>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="pw">Password</label>
+                <input type="password" id="pw" name="pw" required>
+            </div>
+            <div class="sign-in-btn">
+                <input type="submit" value="sign-in">
+            </div>
+        </form>
+    </section>
+
+    <script type="text/javascript" src="script.js"></script>
+    <script type="module" src="supabaseClient.js"></script>
+</body>
+</html>
