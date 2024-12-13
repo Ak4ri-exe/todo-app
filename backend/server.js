@@ -11,6 +11,7 @@ dotenv.config();
 // Creates an instance of an Express application
 const app = express();
 
+// Middleware functions are functions that process incoming requests before they reach the routes
 // Adds middleware to parse JSON bodies of incoming requests.
 app.use(bodyParser.json());
 
@@ -19,16 +20,29 @@ app.use((req, res, next) => {
     next();
 });
 
-// Sample route for testing
+
+// testing routes -> send response for each route
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.send('server test test');
 });
 
-  // Start the server
+app.get('/about', (req, res) => {
+  res.send('about page');
+});
+
+app.get('/contact', (req, res) => {
+  res.send('contact page');
+});
+
+  // Start the server and listen to incoming requests on this port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
 
-  // how does this shishi work
+  // steps
+    // start server
+    // set up env variables
+    // intergrate with supabase
+    
