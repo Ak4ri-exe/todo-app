@@ -36,7 +36,8 @@ function addTask() {
 
     // Add event listener to the checkbox
     checkbox.addEventListener("click", function (){
-        li.classList.toggle("completed", checkbox.checked); // add the "completed" class to the list item li when it's checked
+        const label = li.querySelector("label");
+        label.classList.toggle("completed", checkbox.checked); // add the "completed" class to the list item li when it's checked
         // the CSS style for the class .completed is executed too when it's checked
     });
 
@@ -59,9 +60,4 @@ function addTask() {
     });
 }
 
-// import { createClient } from '@supabase/supabase-js';
-
-// const supabaseUrl = 'https://your-project.supabase.co';
-// const supabaseKey = 'your-anon-key';
-// const supabase = createClient(supabaseUrl, supabaseKey);
-
+// need to handle if the list item text is too long
