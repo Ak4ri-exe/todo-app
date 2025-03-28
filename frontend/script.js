@@ -4,12 +4,30 @@ const inputBox = document.getElementById("input-box");
 // will be used to display the list of todos
 const listContainer = document.getElementById("list-container");
 
+// will be used for notification display
+const notification = document.getElementById("notification");
+
+// notification display function
+function displayNotification(message, messageType) {
+    notification.textContent = message;
+    notification.classList.remove("hidden");
+    notification.classList.add("show");
+
+    // handle error for message type
+    notification.classList.add(messageType);
+    // hide notification after 3s
+    setTimeout(() => {
+        notification.classList.remove("show");
+        notification.classList.add("hidden");
+    }, 2000);
+}
+
 // add task func
 function addTask() {
     const task = inputBox.value.trim(); // trim() removes whitespace from both sides of a string
     console.log(task);
     if (!task) {
-        alert("Please write down a Task");
+        displayNotification("Please write down a Task", "success");
         return;
     }
     // create new li for the added task
@@ -61,3 +79,10 @@ function addTask() {
 }
 
 // need to handle if the list item text is too long
+
+inputBox.addEventListener("keydown", function (event){
+
+    if (event.key == "Enter") {
+        addTask();
+    }
+});

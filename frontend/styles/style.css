@@ -259,11 +259,53 @@ header ul li a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .sign-up-btn input:hover , .sign-in-btn input:hover {
     cursor: pointer;
     background-color: #574a76;
 }
 
+/* Notification styles */
+#notification{
+    background-color: black;
+    position: fixed;
+    z-index: 1000;
+    top: 20px;
+    left: 42%;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade-in and slide-in effect */
+    /* Moves the notification slightly upward initially , so it slides into place when it becomes visible.*/
+    transform: translateY(-20px); 
+}
+
+#notification.show {
+    opacity: 1; /* Makes the notification visible */
+    transform: translateY(0); /* Moves the notification to its original position */
+}
+
+#notification.hidden {
+    opacity: 0; /* Hides the notification */
+    transform: translateY(-20px); /* Moves the notification slightly upward */
+}
+
+#notification.success {
+    background-color: #d4edda; /* Light green for success */
+    color: #155724; /* Dark green text */
+}
+
+#notification.error {
+    background-color: #f8d7da; /* Light red for error */
+    color: #721c24; /* Dark red text */
+}
+
+#notification.warning {
+    background-color: #fff3cd; /* Light yellow for warning */
+    color: #856404; /* Dark yellow text */
+}
 @media (max-width: 500px) {
     .todo-container {
         width: 90%;
@@ -281,5 +323,11 @@ header ul li a:hover {
 
     #input-button {
         width: 100%;
+    }
+    
+    #notification {
+        width: 90%; /* Make the notification take up most of the screen width */
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
