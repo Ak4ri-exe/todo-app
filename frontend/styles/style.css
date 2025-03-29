@@ -111,7 +111,7 @@ header ul li a:hover {
     z-index: 1;
 }
 
-.completed span{
+.completed {
     text-decoration: line-through;
     color: #D4BEE4;
 }
@@ -131,6 +131,7 @@ header ul li a:hover {
 }
 
 #list-container li {
+    
     background-color: #f7f7f7;
     margin: 10px auto;
     padding: 15px 15px;
@@ -148,12 +149,19 @@ header ul li a:hover {
     padding: 5px;
 }
 
-#list-container li label{
+.little-container{
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 10px;
 }
 
+#list-container li label.edit-input {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 #list-container li label span {
     font-size: 1.1em;
 }
@@ -306,6 +314,18 @@ header ul li a:hover {
     background-color: #fff3cd; /* Light yellow for warning */
     color: #856404; /* Dark yellow text */
 }
+
+.edit-input {
+    background-color: inherit;
+    font: inherit;
+    color: inherit;
+    border:none;
+    outline:none;
+}
+
+
+
+
 @media (max-width: 500px) {
     .todo-container {
         width: 90%;
