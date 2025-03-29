@@ -38,7 +38,7 @@ function addTask() {
         <label>
             <input class="input-checkbox" type="checkbox">
         </label>
-        <span class="task-text"> ${task} </span>
+        <span class="task-text">${task}</span>
     </div>
     <span class="icon-container">
         <i class="fas fa-edit edit-icon"></i>
@@ -64,35 +64,34 @@ function addTask() {
         // the CSS style for the class .completed is executed too when it's checked
     });
 
-    // // Add event listener to edit task item -> on text
-    taskSpan.addEventListener("click", function (event) {
-        const taskSpan = li.querySelector(".task-text"); // Get the task text <span>
-    
-        // Create an input field pre-filled with the current task text
+    li.addEventListener("click", function () {
+        const littleContainer = taskSpan.parentNode; // Get the parent <div class="little-container">
         const input = document.createElement("input");
         input.type = "text";
-        input.value = taskSpan.textContent; // Set the input value to the current task text
+        input.value = taskSpan.textContent;
         input.className = "edit-input";
     
-        // Replace the task text with the input field
-        const label = taskSpan.parentNode; // Get the parent <label> of the taskSpan
-        label.replaceChild(input, taskSpan); // Replace the taskSpan with the input field
+        let isReplaced = false; // Flag to prevent multiple replacements
     
-        // Focus the input field
+        // Replace the task text with the input field
+        if (littleContainer)
+            littleContainer.replaceChild(input, taskSpan);
         input.focus();
     
-        // Save the new text when the user presses Enter or loses focus
-        input.addEventListener("blur", function () {
-            const updatedText = input.value.trim() || taskSpan.textContent; // Keep original text if input is empty
-            taskSpan.textContent = updatedText; // Update the task text
-            label.replaceChild(taskSpan, input); // Replace the input with the updated text
-        });
+        function replaceInputWithSpan() {
+            if (isReplaced) return; // Prevent multiple replacements
+            isReplaced = true;
     
+            const updatedText = input.value.trim() || taskSpan.textContent;
+            taskSpan.textContent = updatedText;
+            littleContainer.replaceChild(taskSpan, input);
+        }
+    
+        // Save the new text when the user presses Enter or loses focus
+        input.addEventListener("blur", replaceInputWithSpan);
         input.addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
-                const updatedText = input.value.trim() || taskSpan.textContent;
-                taskSpan.textContent = updatedText;
-                label.replaceChild(taskSpan, input);
+                replaceInputWithSpan();
             }
         });
     });
