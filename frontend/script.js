@@ -50,6 +50,7 @@ function addTask() {
 
     // Select elements within the list item
     const checkbox = li.querySelector("label input"); // select by the input HTML tag inside the li
+    const div = li.querySelector(".little-container");
     const editBtn = li.querySelector(".edit-icon"); // select by class
     const taskSpan = li.querySelector("span"); // select by the span HTML tag inside the li
     const deleteBtn = li.querySelector(".delete-icon"); // select by class
@@ -60,41 +61,57 @@ function addTask() {
     // Add event listener to the checkbox
     checkbox.addEventListener("click", function (){
         console.log("called here for checkbox!");
-        checkbox.classList.toggle("completed", checkbox.checked); // add the "completed" class to the list item li when it's checked
+        div.classList.toggle("completed", checkbox.checked); // add the "completed" class to the list item li when it's checked
         // the CSS style for the class .completed is executed too when it's checked
     });
 
-    li.addEventListener("click", function () {
-        const littleContainer = taskSpan.parentNode; // Get the parent <div class="little-container">
-        const input = document.createElement("input");
-        input.type = "text";
-        input.value = taskSpan.textContent;
-        input.className = "edit-input";
-    
-        let isReplaced = false; // Flag to prevent multiple replacements
-    
-        // Replace the task text with the input field
-        if (littleContainer)
-            littleContainer.replaceChild(input, taskSpan);
-        input.focus();
-    
-        function replaceInputWithSpan() {
-            if (isReplaced) return; // Prevent multiple replacements
-            isReplaced = true;
-    
-            const updatedText = input.value.trim() || taskSpan.textContent;
-            taskSpan.textContent = updatedText;
-            littleContainer.replaceChild(taskSpan, input);
+    // Add event listener to the checkbox
+checkbox.addEventListener("click", function (event) {
+    console.log("Checkbox clicked!");
+    event.stopPropagation(); // Prevent the click event from propagating to the <li>
+    div.classList.toggle("completed", checkbox.checked); // Add or remove the "completed" class
+});
+
+// Add event listener to the <li>
+li.addEventListener("click", function () {
+    // Remove the "completed" class if it exists
+    if (div.classList.contains("completed")) {
+        div.classList.remove("completed");
+        checkbox.checked = false; // Uncheck the checkbox
+        return;
+    }
+
+    // Logic for editing the task
+    const littleContainer = taskSpan.parentNode; // Get the parent <div class="little-container">
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = taskSpan.textContent.trim(); // Trim any extra whitespace
+    input.className = "edit-input";
+
+    let isReplaced = false; // Flag to prevent multiple replacements
+
+    // Replace the task text with the input field
+    littleContainer.replaceChild(input, taskSpan);
+    input.focus();
+
+    function replaceInputWithSpan() {
+        if (isReplaced) return; // Prevent multiple replacements
+        isReplaced = true;
+
+        const updatedText = input.value.trim() || taskSpan.textContent.trim(); // Trim the input value
+        taskSpan.textContent = updatedText;
+        littleContainer.replaceChild(taskSpan, input);
+    }
+
+    // Save the new text when the user presses Enter or loses focus
+    input.addEventListener("blur", replaceInputWithSpan);
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            replaceInputWithSpan();
         }
-    
-        // Save the new text when the user presses Enter or loses focus
-        input.addEventListener("blur", replaceInputWithSpan);
-        input.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                replaceInputWithSpan();
-            }
-        });
     });
+});
+
     // Add event listener to the edit icon
     // editBtn.addEventListener("click", function(){
     //     const update = prompt("Edit task:", taskSpan.textContent); // prompt() -> display a dialog box asking the user to input a new task
