@@ -23,6 +23,22 @@ ToDoApp is a simple yet powerful task management application that allows users t
 ✅ **Scalability** – Designed with a modular architecture for future expansion.  
 
 ---
+## 💻 Technologies Used  
+
+### **Frontend**  
+- ![HTML5](https://img.shields.io/badge/HTML5-%23E34F26?style=flat&logo=html5&logoColor=white) **HTML5** – Structuring the web pages.  
+- ![CSS3](https://img.shields.io/badge/CSS3-%231572B6?style=flat&logo=css3&logoColor=white) **CSS3** – Styling the web pages.  
+- ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=javascript&logoColor=black) **JavaScript** – Frontend logic for task management.  
+- ![Supabase](https://img.shields.io/badge/Supabase-%2300C26B?style=flat&logo=supabase&logoColor=white) **Supabase** – Database integration for user authentication and task management.  
+
+### **Backend**  
+- ![Node.js](https://img.shields.io/badge/Node.js-%23339933?style=flat&logo=node.js&logoColor=white) **Node.js** – JavaScript runtime for backend development.  
+- ![Express.js](https://img.shields.io/badge/Express.js-%23404D59?style=flat&logo=express&logoColor=white) **Express.js** – Web framework for building the API.  
+- ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-%23336791?style=flat&logo=postgresql&logoColor=white) **PostgreSQL** – Relational database for storing user and task data.  
+- ![bcrypt](https://img.shields.io/badge/bcrypt-%238D64A1?style=flat&logo=appveyor&logoColor=white) **bcrypt** – Library for hashing passwords.  
+- ![JWT](https://img.shields.io/badge/JSON%20Web%20Tokens-%2341B58D?style=flat&logo=json-web-tokens&logoColor=white) **JWT** – JSON Web Tokens for secure user authentication.  
+- ![dotenv](https://img.shields.io/badge/dotenv-%23048F1E?style=flat&logo=dotenv&logoColor=white) **dotenv** – Environment variable management.  
+ 
 
 ## 📂 Project Structure  
 
