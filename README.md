@@ -104,9 +104,11 @@ npm install
 4️⃣ **Set Up Environment Variables**  
 Create a `.env` file in the `backend/` directory and add:  
 ```env
-DB_CONNECTION=your_postgresql_connection_string
-PORT=5000
-JWT_SECRET=your_secret_key
+DB_HOST=your-database-host
+DB_PORT=your-database-port
+DB_DATABASE=your-database-name
+DB_USER=your-database-username
+DB_PASSWORD=your-database-password
 ```
 
 5️⃣ **Start the Backend Server**  
