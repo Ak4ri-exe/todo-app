@@ -15,6 +15,7 @@ function displayNotification(message, messageType) {
 
     // handle error for message type
     notification.classList.add(messageType);
+
     // hide notification after 3s
     setTimeout(() => {
         notification.classList.remove("show");
@@ -32,6 +33,7 @@ function addTask() {
     }
     // create new li for the added task
     const li = document.createElement("li");
+    
     // set up the HTML content of the list item
     li.innerHTML = `
     <div class="little-container">
