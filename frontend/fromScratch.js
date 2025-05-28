@@ -33,7 +33,8 @@ const addLi = (task) =>
 function addTask(){
     const task = inputBox.value; 
 
-    console.log(newLi.innerHTML);
+    // console.log(newLi.innerHTML);
     listContainer.appendChild(addLi(task));
+    addLi(task)
     
 }
