@@ -30,11 +30,21 @@ const addLi = (task) =>
     return node
 }
 
-function addTask(){
-    const task = inputBox.value; 
 
-    // console.log(newLi.innerHTML);
-    listContainer.appendChild(addLi(task));
-    addLi(task)
+function addTask(){
+  // create array of tasks
+    const task = inputBox.value; 
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]")
+
+    tasks.push(task);
     
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+
+    listContainer.appendChild(addLi(task));
+    // localStorage.setItem("task", task);
+    // console.log(localStorage.getItem("task"));
+    // console.log(localStorage.key(0))
+    // console.log(localStorage.key(1))
+    
+    inputBox.value = ''
 }
