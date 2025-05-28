@@ -48,3 +48,5 @@ function addTask(){
     
     inputBox.value = ''
 }
+
+// to do : -> understand how things work in localstorage
